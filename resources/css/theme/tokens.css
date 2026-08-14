@@ -1,0 +1,186 @@
+/*
+ * JumKneaBooth design tokens
+ *
+ * Keep semantic aliases in this file. Components should consume semantic
+ * Tailwind utilities such as bg-surface, text-brand, and ring-ring instead of
+ * hard-coded color values so light and dark themes remain interchangeable.
+ */
+
+:root {
+    color-scheme: light;
+
+    /* Platform brand: trustworthy deep blue with quiet celebratory accents. */
+    --brand-900: #082c4c;
+    --brand-700: #0d4f8b;
+    --brand-600: #1469b8;
+    --brand-500: #2e86de;
+    --brand-100: #dceeff;
+
+    --mango-500: #f5a524;
+    --coral-500: #e85d75;
+    --mint-600: #168a62;
+    --privacy-600: #6b5cc5;
+
+    /* Surface hierarchy. */
+    --surface-sunken: #f7f9fc;
+    --surface: #ffffff;
+    --surface-elevated: #f1f5f9;
+    --surface-inverse: #082c4c;
+
+    /* Text and structure. */
+    --text: #15202b;
+    --text-muted: #5f6b78;
+    --text-subtle: #7c8896;
+    --text-inverse: #ffffff;
+    --border: #d9e1ea;
+    --border-strong: #b8c4d0;
+
+    /* Interactive aliases. */
+    --brand: var(--brand-700);
+    --brand-hover: var(--brand-600);
+    --brand-soft: var(--brand-100);
+    --brand-foreground: var(--text-inverse);
+    --brand-solid: var(--brand-700);
+    --brand-solid-foreground: var(--text-inverse);
+
+    --accent: var(--mango-500);
+    --accent-hover: #d88d0d;
+    --accent-subtle: #fff3dc;
+    --accent-foreground: #15202b;
+
+    /* Semantic feedback. */
+    --success: var(--mint-600);
+    --warning: var(--mango-500);
+    --error: #d14343;
+    --info: var(--brand-500);
+    --privacy: var(--privacy-600);
+    --verified: var(--brand-600);
+
+    --ring: var(--brand-600);
+    --overlay: rgb(8 44 76 / 0.52);
+    --radius: 0.75rem;
+
+    /* Design-system motion values. */
+    --motion-instant: 100ms;
+    --motion-fast: 160ms;
+    --motion-standard: 240ms;
+    --motion-deliberate: 360ms;
+    --motion-celebration: 700ms;
+    --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --motion-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+    color-scheme: dark;
+
+    /* Keep the platform identity bright enough for dark-control surfaces. */
+    --surface-sunken: #0e1013;
+    --surface: #171a1f;
+    --surface-elevated: #20242a;
+    --surface-inverse: #f3f6f8;
+
+    --text: #f3f6f8;
+    --text-muted: #a9b3be;
+    --text-subtle: #7e8996;
+    --text-inverse: #061626;
+    --border: #30363d;
+    --border-strong: #46505b;
+
+    --brand: #85c1ff;
+    --brand-hover: #b5daff;
+    --brand-soft: #123a60;
+    --brand-foreground: #061626;
+    --brand-solid: #2e86de;
+    --brand-solid-foreground: #061626;
+
+    --accent: #f5a524;
+    --accent-hover: #ffc565;
+    --accent-subtle: #3a2b12;
+    --accent-foreground: #ffffff;
+
+    --success: #44c697;
+    --warning: #ffc565;
+    --error: #ff7373;
+    --info: #85c1ff;
+    --privacy: #aca4ef;
+    --verified: #85c1ff;
+
+    --ring: #85c1ff;
+    --overlay: rgb(0 0 0 / 0.72);
+}
+
+@theme {
+    --font-sans: Inter, 'Kantumruy Pro', ui-sans-serif, system-ui, sans-serif;
+    --font-heading:
+        Siemreap, Inter, 'Kantumruy Pro', ui-sans-serif, system-ui, sans-serif;
+    --font-khmer: 'Kantumruy Pro', Inter, ui-sans-serif, system-ui, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-surface-sunken: var(--surface-sunken);
+    --color-surface: var(--surface);
+    --color-surface-elevated: var(--surface-elevated);
+    --color-surface-inverse: var(--surface-inverse);
+    --color-foreground: var(--text);
+    --color-muted: var(--text-muted);
+    --color-muted-foreground: var(--text-muted);
+    --color-subtle: var(--text-subtle);
+    --color-inverse: var(--text-inverse);
+    --color-border: var(--border);
+    --color-border-strong: var(--border-strong);
+
+    --color-brand-100: var(--brand-100);
+    --color-brand-500: var(--brand-500);
+    --color-brand-600: var(--brand-600);
+    --color-brand-700: var(--brand-700);
+    --color-brand-900: var(--brand-900);
+    --color-mango-500: var(--mango-500);
+    --color-coral-500: var(--coral-500);
+    --color-mint-600: var(--mint-600);
+    --color-brand: var(--brand);
+    --color-brand-hover: var(--brand-hover);
+    --color-brand-soft: var(--brand-soft);
+    --color-brand-foreground: var(--brand-foreground);
+    --color-brand-solid: var(--brand-solid);
+    --color-brand-solid-foreground: var(--brand-solid-foreground);
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-subtle: var(--accent-subtle);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-error: var(--error);
+    --color-info: var(--info);
+    --color-privacy: var(--privacy);
+    --color-verified: var(--verified);
+    --color-ring: var(--ring);
+    --color-overlay: var(--overlay);
+
+    /* shadcn compatibility aliases. */
+    --color-background: var(--surface-sunken);
+    --color-card: var(--surface);
+    --color-card-foreground: var(--text);
+    --color-popover: var(--surface);
+    --color-popover-foreground: var(--text);
+    --color-primary: var(--brand-solid);
+    --color-primary-foreground: var(--brand-solid-foreground);
+    --color-secondary: var(--surface-elevated);
+    --color-secondary-foreground: var(--text);
+    --color-destructive: var(--error);
+    --color-destructive-foreground: var(--text-inverse);
+    --color-input: var(--border);
+    --color-sidebar: var(--surface);
+    --color-sidebar-foreground: var(--text);
+    --color-sidebar-primary: var(--brand-solid);
+    --color-sidebar-primary-foreground: var(--brand-solid-foreground);
+    --color-sidebar-accent: var(--brand-soft);
+    --color-sidebar-accent-foreground: var(--brand);
+    --color-sidebar-border: var(--border);
+    --color-sidebar-ring: var(--ring);
+
+    --ease-standard: var(--motion-ease-standard);
+    --ease-emphasized: var(--motion-ease-emphasized);
+}

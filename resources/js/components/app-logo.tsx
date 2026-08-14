@@ -3,7 +3,7 @@ import { Camera } from 'lucide-react';
 export default function AppLogo({ subtitle }: { subtitle?: string }) {
     return (
         <>
-            <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-brand text-white shadow-sm">
+            <div className="motion-interactive flex size-8 shrink-0 items-center justify-center rounded-md bg-brand-solid text-brand-solid-foreground shadow-sm">
                 <Camera className="size-4" aria-hidden="true" />
             </div>
             <div className="ml-1 grid flex-1 text-left text-sm">

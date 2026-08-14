@@ -1,10 +1,5 @@
-import {
-    Camera,
-    Handshake,
-    ShieldCheck,
-    Wallet,
-    type LucideIcon,
-} from 'lucide-react';
+import { Camera, Handshake, ShieldCheck, Wallet } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { toUrl } from '@/lib/utils';
 import type { NavGroup } from '@/types';
 

@@ -70,7 +70,7 @@ export default function Dashboard() {
                             key={metric.label}
                             href={metric.href}
                             prefetch
-                            className="flex flex-col justify-between rounded-xl bg-surface p-5 ring-1 ring-border transition-colors hover:bg-surface-elevated"
+                            className="motion-card flex flex-col justify-between rounded-xl bg-surface p-5 ring-1 ring-border hover:bg-surface-elevated"
                         >
                             <div className="flex items-center justify-between">
                                 <p className="text-sm text-muted">

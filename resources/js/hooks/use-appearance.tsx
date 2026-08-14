@@ -9,8 +9,8 @@ export type UseAppearanceReturn = {
     readonly updateAppearance: (mode: Appearance) => void;
 };
 
-const STORAGE_KEY = 'bayoness-theme';
-const LEGACY_STORAGE_KEY = 'appearance';
+const STORAGE_KEY = 'jumkneabooth-theme';
+const LEGACY_STORAGE_KEYS = ['bayoness-theme', 'appearance'] as const;
 
 const listeners = new Set<() => void>();
 let currentAppearance: Appearance = 'system';
@@ -41,11 +41,11 @@ const getStoredAppearance = (): Appearance => {
         return 'system';
     }
 
-    const stored =
-        localStorage.getItem(STORAGE_KEY) ??
-        localStorage.getItem(LEGACY_STORAGE_KEY);
+    const stored = [STORAGE_KEY, ...LEGACY_STORAGE_KEYS]
+        .map((key) => localStorage.getItem(key))
+        .find(isAppearance);
 
-    return isAppearance(stored) ? stored : 'system';
+    return stored ?? 'system';
 };
 
 currentAppearance = getStoredAppearance();
@@ -68,9 +68,8 @@ const applyTheme = (appearance: Appearance): void => {
 
 const persistAppearance = (mode: Appearance): void => {
     localStorage.setItem(STORAGE_KEY, mode);
-    localStorage.removeItem(LEGACY_STORAGE_KEY);
+    LEGACY_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
     setCookie(STORAGE_KEY, mode);
-    setCookie(LEGACY_STORAGE_KEY, mode);
 };
 
 const subscribe = (callback: () => void) => {

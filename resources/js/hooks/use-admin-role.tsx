@@ -1,14 +1,13 @@
 import { useSyncExternalStore } from 'react';
+import { adminNav } from '@/config/admin-nav';
 import {
-    type AdminRole,
-    type AdminRoleId,
     DEFAULT_ADMIN_ROLE_ID,
     canAccessPath,
     filterNavForRole,
     getAdminRole,
     isAdminRoleId,
 } from '@/config/admin-roles';
-import { adminNav } from '@/config/admin-nav';
+import type { AdminRole, AdminRoleId } from '@/config/admin-roles';
 import type { NavGroup } from '@/types';
 
 export type UseAdminRoleReturn = {

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { useEffect } from 'react';
 import AppLogo from '@/components/app-logo';
 import {
     DropdownMenu,
@@ -61,7 +61,7 @@ export function RoleSwitcher() {
                         </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
-                        className="w-(--radix-dropdown-menu-trigger-width) min-w-72 rounded-lg"
+                        className="motion-panel-enter w-(--radix-dropdown-menu-trigger-width) min-w-72 rounded-lg"
                         align="start"
                         side={isMobile ? 'bottom' : 'right'}
                         sideOffset={4}
