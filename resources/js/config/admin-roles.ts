@@ -1,14 +1,9 @@
-import { Camera, Handshake, ShieldCheck, Wallet } from 'lucide-react';
+import { Settings2, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { toUrl } from '@/lib/utils';
 import type { NavGroup } from '@/types';
 
-export type AdminRoleId =
-    | 'super-admin'
-    | 'booth-admin'
-    | 'sponsorship-admin'
-    | 'privacy-support'
-    | 'revenue-admin';
+export type AdminRoleId = 'super-admin' | 'admin';
 
 export type AdminRole = {
     id: AdminRoleId;
@@ -27,39 +22,21 @@ export const adminRoles: AdminRole[] = [
         allow: '*',
     },
     {
-        id: 'booth-admin',
-        name: 'Booth Admin',
-        description: 'Booth operations and themes',
-        icon: Camera,
-        allow: ['/dashboard', '/booth', '/analytics/booths'],
-    },
-    {
-        id: 'sponsorship-admin',
-        name: 'Sponsorship Admin',
-        description: 'Plans, campaigns, and placements',
-        icon: Handshake,
-        allow: ['/dashboard', '/sponsors', '/analytics/sponsors'],
-    },
-    {
-        id: 'privacy-support',
-        name: 'Privacy & Support',
-        description: 'Members, photo review, and retention',
-        icon: ShieldCheck,
+        id: 'admin',
+        name: 'Admin',
+        description: 'Day-to-day booth and campaign operations',
+        icon: Settings2,
         allow: [
             '/dashboard',
-            '/booth/sessions',
-            '/members',
+            '/booth/frames',
+            '/booth/filters',
+            '/booth/watermarks',
+            '/booth/devices',
+            '/sponsors/campaigns',
+            '/sponsors/placements',
             '/access/guests',
-            '/privacy',
             '/analytics/booths',
         ],
-    },
-    {
-        id: 'revenue-admin',
-        name: 'Revenue Admin',
-        description: 'Tips, payments, and revenue insight',
-        icon: Wallet,
-        allow: ['/dashboard', '/revenue', '/analytics/sponsors'],
     },
 ];
 

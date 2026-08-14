@@ -105,8 +105,8 @@ export function RoleSwitcher() {
                             );
                         })}
                         <p className="px-2 pt-1 pb-1.5 text-[11px] text-subtle">
-                            UI preview only. Server permissions will be enforced
-                            in the authentication phase.
+                            UI preview only. Server permissions will enforce the
+                            Super Admin and Admin access model.
                         </p>
                     </DropdownMenuContent>
                 </DropdownMenu>
