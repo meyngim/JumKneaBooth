@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
-use App\Http\Controllers\Auth\SocialAuthController;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -49,10 +48,8 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureViews(): void
     {
-        Fortify::loginView(fn (Request $request) => Inertia::render('auth/login', [
+        Fortify::loginView(fn (Request $request) => Inertia::render('auth/admin-login', [
             'canResetPassword' => Features::enabled(Features::resetPasswords()),
-            'oauthError' => $request->session()->get('oauth_error'),
-            'oauthProviders' => SocialAuthController::availableProviders(),
             'status' => $request->session()->get('status'),
         ]));
 

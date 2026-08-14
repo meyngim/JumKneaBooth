@@ -26,7 +26,7 @@ class EnsureAdminTwoFactorIsConfirmed
         }
 
         return redirect()
-            ->route('security.edit')
-            ->with('status', 'Set up and confirm your authenticator app to access the Control Room.');
+            ->route('admin.two-factor.setup')
+            ->with('status', 'Set up and confirm your authenticator app to unlock the Control Room.');
     }
 }

@@ -24,7 +24,8 @@ test('an admin must confirm TOTP before accessing the Control Room', function ()
 
     $this->actingAs($admin)
         ->get(route('dashboard'))
-        ->assertRedirect(route('security.edit'));
+        ->assertRedirect(route('admin.two-factor.setup'))
+        ->assertSessionHas('status', 'Set up and confirm your authenticator app to unlock the Control Room.');
 });
 
 test('a confirmed admin can access operational areas but not Super Admin areas', function () {
