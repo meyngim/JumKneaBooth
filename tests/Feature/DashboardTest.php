@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -10,8 +11,11 @@ test('guests are redirected to the login page', function () {
     $response->assertRedirect(route('login'));
 });
 
-test('authenticated users can visit the dashboard', function () {
-    $user = User::factory()->create();
+test('a confirmed Super Admin can visit the dashboard', function () {
+    $user = User::factory()->withTwoFactor()->create([
+        'role' => UserRole::SuperAdmin,
+    ]);
+
     $this->actingAs($user);
 
     $response = $this->get(route('dashboard'));

@@ -1,25 +1,45 @@
 <?php
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('guests are redirected from an admin workspace', function () {
-    $this->get(route('users.index'))->assertRedirect(route('login'));
+test('guests are redirected from an administrative workspace', function () {
+    $this->get(route('booth.frames'))->assertRedirect(route('login'));
 });
 
-test('authenticated users can open admin workspace pages', function (string $route) {
-    $user = User::factory()->create();
+test('a confirmed Admin can open day-to-day workspaces', function (string $route) {
+    $admin = User::factory()->withTwoFactor()->create([
+        'role' => UserRole::Admin,
+    ]);
 
-    $this->actingAs($user)
+    $this->actingAs($admin)
         ->get(route($route))
         ->assertOk();
 })->with([
-    'users.index',
-    'creators.applications',
-    'ads.campaigns',
-    'payments.payway',
-    'analytics.platform',
+    'booth.frames',
+    'booth.filters',
+    'booth.devices',
+    'sponsors.campaigns',
+    'sponsors.placements',
+    'access.guests',
+    'analytics.booths',
+]);
+
+test('a confirmed Admin cannot open Super Admin workspaces', function (string $route) {
+    $admin = User::factory()->withTwoFactor()->create([
+        'role' => UserRole::Admin,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route($route))
+        ->assertForbidden();
+})->with([
+    'booth.sessions',
+    'members.index',
+    'privacy.retention',
+    'revenue.tips',
     'system.settings',
 ]);
