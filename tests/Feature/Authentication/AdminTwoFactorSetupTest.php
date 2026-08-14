@@ -50,3 +50,27 @@ test('the homepage exposes the member OAuth entry area', function () {
             ->has('oauthProviders'),
         );
 });
+
+test('a fresh administrative password login can proceed directly to TOTP enrollment', function () {
+    $admin = User::factory()->create([
+        'email' => 'admin@example.test',
+        'role' => UserRole::Admin,
+    ]);
+
+    $this->post(route('login.store'), [
+        'email' => $admin->email,
+        'password' => 'password',
+    ])
+        ->assertRedirect(route('dashboard'))
+        ->assertSessionHas('auth.password_confirmed_at');
+
+    $this->get(route('dashboard'))
+        ->assertRedirect(route('admin.two-factor.setup'));
+
+    $this->get(route('admin.two-factor.setup'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('auth/admin-two-factor-setup')
+            ->where('canManageTwoFactor', true),
+        );
+});
