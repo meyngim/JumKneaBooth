@@ -1,24 +1,17 @@
 import {
-    BadgeCheck,
-    Banknote,
-    Bell,
+    Camera,
     CircleDollarSign,
-    Flag,
-    KeyRound,
+    Frame,
+    Handshake,
     LayoutDashboard,
     Megaphone,
-    Newspaper,
-    QrCode,
-    Rocket,
+    Monitor,
+    Palette,
     ScrollText,
     Settings2,
-    Shield,
-    Tags,
+    ShieldCheck,
     TrendingUp,
-    Undo2,
-    UserCheck,
     Users,
-    Wallet,
 } from 'lucide-react';
 import type { NavGroup } from '@/types';
 
@@ -27,138 +20,79 @@ export const adminNav: NavGroup[] = [
         title: 'Overview',
         items: [
             {
-                title: 'Dashboard',
+                title: 'Control Room',
                 href: '/dashboard',
                 icon: LayoutDashboard,
             },
         ],
     },
     {
-        title: 'Users & Creators',
+        title: 'Booth Operations',
         items: [
             {
-                title: 'All Users',
-                href: '/users',
+                title: 'Photo Sessions',
+                href: '/booth/sessions',
+                icon: Camera,
+            },
+            {
+                title: 'Frames & Filters',
+                href: '/booth/frames',
+                icon: Palette,
+            },
+            {
+                title: 'Booth Devices',
+                href: '/booth/devices',
+                icon: Monitor,
+            },
+        ],
+    },
+    {
+        title: 'Sponsors & Campaigns',
+        items: [
+            {
+                title: 'Sponsors',
+                href: '/sponsors',
+                icon: Handshake,
+            },
+            {
+                title: 'Campaigns',
+                href: '/sponsors/campaigns',
+                icon: Megaphone,
+            },
+            {
+                title: 'Brand Placements',
+                href: '/sponsors/placements',
+                icon: Frame,
+            },
+        ],
+    },
+    {
+        title: 'Members & Privacy',
+        items: [
+            {
+                title: 'Members',
+                href: '/members',
                 icon: Users,
             },
             {
-                title: 'Creators',
-                href: '/creators',
-                icon: BadgeCheck,
-            },
-            {
-                title: 'Applications',
-                href: '/creators/applications',
-                icon: UserCheck,
-            },
-            {
-                title: 'Admins',
-                href: '/admins',
-                icon: Shield,
+                title: 'Retention & Privacy',
+                href: '/privacy/retention',
+                icon: ShieldCheck,
             },
         ],
     },
     {
-        title: 'Content',
+        title: 'Insights',
         items: [
             {
-                title: 'Posts',
-                href: '/content/posts',
-                icon: Newspaper,
-            },
-            {
-                title: 'Reported',
-                href: '/content/reports',
-                icon: Flag,
-            },
-            {
-                title: 'Categories',
-                href: '/content/categories',
-                icon: Tags,
-            },
-        ],
-    },
-    {
-        title: 'Monetization',
-        items: [
-            {
-                title: 'Subscriptions',
-                href: '/monetization/subscriptions',
-                icon: CircleDollarSign,
-            },
-            {
-                title: 'Content Boost',
-                href: '/monetization/boosts',
-                icon: Rocket,
-            },
-            {
-                title: 'Advertising',
-                href: '/monetization/ads/campaigns',
-                icon: Megaphone,
-                items: [
-                    {
-                        title: 'Ad Campaigns',
-                        href: '/monetization/ads/campaigns',
-                    },
-                    {
-                        title: 'Advertisers',
-                        href: '/monetization/ads/advertisers',
-                    },
-                    {
-                        title: 'Ad Placements',
-                        href: '/monetization/ads/placements',
-                    },
-                ],
-            },
-            {
-                title: 'Payouts',
-                href: '/monetization/payouts',
-                icon: Wallet,
-            },
-        ],
-    },
-    {
-        title: 'Payments',
-        items: [
-            {
-                title: 'Transactions',
-                href: '/payments/transactions',
-                icon: Banknote,
-            },
-            {
-                title: 'ABA PayWay',
-                href: '/payments/payway',
-                icon: QrCode,
-            },
-            {
-                title: 'Refunds',
-                href: '/payments/refunds',
-                icon: Undo2,
-            },
-        ],
-    },
-    {
-        title: 'Analytics',
-        items: [
-            {
-                title: 'Platform',
-                href: '/analytics/platform',
+                title: 'Booth Performance',
+                href: '/analytics/booths',
                 icon: TrendingUp,
             },
             {
-                title: 'Revenue',
-                href: '/analytics/revenue',
+                title: 'Sponsor Performance',
+                href: '/analytics/sponsors',
                 icon: CircleDollarSign,
-            },
-            {
-                title: 'Content',
-                href: '/analytics/content',
-                icon: Newspaper,
-            },
-            {
-                title: 'Growth',
-                href: '/analytics/growth',
-                icon: Users,
             },
         ],
     },
@@ -166,22 +100,17 @@ export const adminNav: NavGroup[] = [
         title: 'System',
         items: [
             {
-                title: 'Settings',
+                title: 'Platform Settings',
                 href: '/system/settings',
                 icon: Settings2,
             },
             {
-                title: 'Notifications',
-                href: '/system/notifications',
-                icon: Bell,
+                title: 'Super Admins',
+                href: '/system/admins',
+                icon: ShieldCheck,
             },
             {
-                title: 'Roles',
-                href: '/system/roles',
-                icon: KeyRound,
-            },
-            {
-                title: 'Activity',
+                title: 'Audit Log',
                 href: '/system/logs',
                 icon: ScrollText,
             },

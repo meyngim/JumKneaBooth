@@ -1,23 +1,14 @@
-import { useAppearance } from '@/hooks/use-appearance';
-
-const SITE_LOGO_DARK = '/brand-images/logo-site/app-logo-dark-mode.png';
-const SITE_LOGO_LIGHT = '/brand-images/logo-site/app-logo-light-mode.png';
+import { Camera } from 'lucide-react';
 
 export default function AppLogo({ subtitle }: { subtitle?: string }) {
-    const { resolvedAppearance } = useAppearance();
-    const logoSrc =
-        resolvedAppearance === 'dark' ? SITE_LOGO_DARK : SITE_LOGO_LIGHT;
-
     return (
         <>
-            <img
-                src={logoSrc}
-                alt="Bayoness"
-                className="size-8 rounded-md object-contain"
-            />
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-brand text-white shadow-sm">
+                <Camera className="size-4" aria-hidden="true" />
+            </div>
             <div className="ml-1 grid flex-1 text-left text-sm">
                 <span className="truncate font-bold tracking-wide text-brand">
-                    BAYONESS
+                    JUMKNEA BOOTH
                 </span>
                 {subtitle && (
                     <span className="truncate text-xs text-muted">

@@ -8,7 +8,7 @@ import SettingsLayout from '@/layouts/settings/layout';
 
 initializeTheme();
 
-const appName = import.meta.env.VITE_APP_NAME || 'BAYONESS';
+const appName = import.meta.env.VITE_APP_NAME || 'JumKneaBooth';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
