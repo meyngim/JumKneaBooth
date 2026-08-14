@@ -13,9 +13,9 @@ final class AdminCatalog
     {
         return [
             'booth.sessions' => [
-                'title' => 'Photo Sessions',
+                'title' => 'Photo Library & Sessions',
                 'group' => 'Booth Experience',
-                'description' => 'Review completed four-shot sessions, private delivery status, QR activity, and obfuscated share links.',
+                'description' => 'Temporarily review retained photo-strip thumbnails and session metadata by date, booth, frame, filter, or sponsor; all photos automatically expire after 30 days.',
                 'href' => '/booth/sessions',
             ],
             'booth.frames' => [
@@ -73,9 +73,9 @@ final class AdminCatalog
                 'href' => '/access/guests',
             ],
             'privacy.retention' => [
-                'title' => 'Privacy & Retention',
+                'title' => 'Photo Retention & Purge',
                 'group' => 'Audience & Privacy',
-                'description' => 'Monitor 30-day R2 asset expiry, automatic purge activity, privacy requests, and failed deletion jobs.',
+                'description' => 'Monitor the temporary Photo Library, 30-day R2 asset expiry, automatic purge activity, privacy requests, and failed deletion jobs.',
                 'href' => '/privacy/retention',
             ],
             'revenue.tips' => [

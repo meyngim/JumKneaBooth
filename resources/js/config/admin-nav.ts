@@ -35,7 +35,7 @@ export const adminNav: NavGroup[] = [
         title: 'Booth Experience',
         items: [
             {
-                title: 'Photo Sessions',
+                title: 'Photo Library & Sessions',
                 href: '/booth/sessions',
                 icon: Camera,
             },
@@ -95,7 +95,7 @@ export const adminNav: NavGroup[] = [
                 icon: QrCode,
             },
             {
-                title: 'Privacy & Retention',
+                title: 'Photo Retention & Purge',
                 href: '/privacy/retention',
                 icon: Trash2,
             },

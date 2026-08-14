@@ -92,13 +92,14 @@ export default function Dashboard() {
                         <div className="flex items-center gap-2">
                             <ShieldCheck className="size-4 text-brand" />
                             <h2 className="text-sm font-medium">
-                                Private delivery & retention
+                                Photo Library, privacy & retention
                             </h2>
                         </div>
                         <p className="mt-2 text-sm text-muted">
-                            Guest sessions use unique, obfuscated QR links.
-                            Member history remains available only during the
-                            same 30-day R2 retention window.
+                            Super Admin can temporarily review retained photo
+                            strips to understand product use. Guest QR links and
+                            member history remain private, and all photo assets
+                            are automatically deleted from R2 after 30 days.
                         </p>
                     </section>
                     <section className="rounded-xl bg-surface p-5 ring-1 ring-border">
