@@ -1,23 +1,42 @@
-import AppLogo from '@/components/app-logo';
+import { router } from '@inertiajs/react';
+import { useEffect } from 'react';
 import { NavMain } from '@/components/nav-main';
+import { RoleSwitcher } from '@/components/role-switcher';
 import {
     Sidebar,
     SidebarContent,
     SidebarHeader,
     SidebarRail,
 } from '@/components/ui/sidebar';
-import { adminNav } from '@/config/admin-nav';
+import { useAdminRole } from '@/hooks/use-admin-role';
+import { useCurrentUrl } from '@/hooks/use-current-url';
+
+const PUBLIC_PREFIXES = ['/settings', '/login', '/register'];
 
 export function AppSidebar() {
+    const { nav, roleId, canAccess } = useAdminRole();
+    const { currentUrl } = useCurrentUrl();
+
+    useEffect(() => {
+        const isPublicRoute = PUBLIC_PREFIXES.some(
+            (prefix) =>
+                currentUrl === prefix || currentUrl.startsWith(`${prefix}/`),
+        );
+
+        if (isPublicRoute || currentUrl === '/' || canAccess(currentUrl)) {
+            return;
+        }
+
+        router.visit('/dashboard');
+    }, [canAccess, currentUrl, roleId]);
+
     return (
         <Sidebar collapsible="icon">
             <SidebarHeader>
-                <div className="overflow-hidden px-2 py-1 group-data-[collapsible=icon]:px-0">
-                    <AppLogo subtitle="Super Admin" />
-                </div>
+                <RoleSwitcher />
             </SidebarHeader>
             <SidebarContent>
-                <NavMain groups={adminNav} />
+                <NavMain groups={nav} />
             </SidebarContent>
             <SidebarRail />
         </Sidebar>
