@@ -3,7 +3,13 @@ import { Camera, Clock3, ShieldCheck } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { Button } from '@/components/ui/button';
 
-export default function MemberHistory() {
+type Props = {
+    flash: {
+        status?: string;
+    };
+};
+
+export default function MemberHistory({ flash }: Props) {
     return (
         <>
             <Head title="Your photo history" />
@@ -20,6 +26,12 @@ export default function MemberHistory() {
                             <Link href="/">Take new photos</Link>
                         </Button>
                     </header>
+
+                    {flash.status && (
+                        <div className="bg-info-soft rounded-xl px-4 py-3 text-center text-sm font-medium text-info ring-1 ring-info/20">
+                            {flash.status}
+                        </div>
+                    )}
 
                     <section className="motion-panel-enter rounded-2xl bg-surface p-8 text-center ring-1 ring-border sm:p-12">
                         <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-brand-soft text-brand">

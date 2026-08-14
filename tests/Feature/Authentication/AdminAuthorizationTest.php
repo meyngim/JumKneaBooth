@@ -6,14 +6,15 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('members cannot access the Control Room', function () {
+test('members are guided to their private history when they open the Control Room', function () {
     $member = User::factory()->create([
         'role' => UserRole::Member,
     ]);
 
     $this->actingAs($member)
         ->get(route('dashboard'))
-        ->assertForbidden();
+        ->assertRedirect(route('member.history'))
+        ->assertSessionHas('status', 'The Control Room is available only to JumKneaBooth administrators.');
 });
 
 test('an admin must confirm TOTP before accessing the Control Room', function () {
@@ -37,7 +38,8 @@ test('a confirmed admin can access operational areas but not Super Admin areas',
 
     $this->actingAs($admin)
         ->get(route('booth.sessions'))
-        ->assertForbidden();
+        ->assertRedirect(route('dashboard'))
+        ->assertSessionHas('status', 'This Control Room area is available only to the Super Admin.');
 });
 
 test('a confirmed Super Admin can access sensitive Control Room areas', function () {

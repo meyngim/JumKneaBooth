@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use RuntimeException;
 
 class AdminUserSeeder extends Seeder
@@ -27,16 +26,15 @@ class AdminUserSeeder extends Seeder
     }
 
     /**
-     * @param  array{name: string, email: string|null, password: string|null}  $account
+     * @param  array{name: string, email: string, password: string|null}  $account
      */
     private function seedAdmin(array $account, UserRole $role): void
     {
         $email = $account['email'];
-        $password = $account['password'];
 
-        if (blank($email) || blank($password)) {
+        if (blank($email)) {
             throw new RuntimeException(sprintf(
-                'Set the %s email and password environment variables before seeding administrative users.',
+                'Set the %s email environment variable before seeding administrative users.',
                 $role === UserRole::SuperAdmin ? 'SUPER_ADMIN' : 'ADMIN',
             ));
         }
@@ -52,10 +50,34 @@ class AdminUserSeeder extends Seeder
 
         if ($isNewUser) {
             $user->forceFill([
-                'password' => Hash::make($password),
+                'password' => $this->initialPassword($account['password'], $role),
             ]);
         }
 
         $user->save();
+    }
+
+    private function initialPassword(?string $configuredPassword, UserRole $role): string
+    {
+        if (filled($configuredPassword)) {
+            return $configuredPassword;
+        }
+
+        $accountLabel = $role === UserRole::SuperAdmin ? 'Super Admin' : 'Admin';
+        $password = $this->command?->secret(
+            "Set a password for {$accountLabel} (input is hidden)",
+        );
+
+        if (blank($password)) {
+            throw new RuntimeException("A password is required to create the {$accountLabel} account.");
+        }
+
+        $confirmation = $this->command?->secret('Confirm the password');
+
+        if (! hash_equals($password, (string) $confirmation)) {
+            throw new RuntimeException('The password confirmation does not match. Run the seeder again.');
+        }
+
+        return $password;
     }
 }

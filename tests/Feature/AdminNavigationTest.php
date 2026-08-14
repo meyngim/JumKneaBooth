@@ -28,14 +28,15 @@ test('a confirmed Admin can open day-to-day workspaces', function (string $route
     'analytics.booths',
 ]);
 
-test('a confirmed Admin cannot open Super Admin workspaces', function (string $route) {
+test('a confirmed Admin is redirected from Super Admin workspaces', function (string $route) {
     $admin = User::factory()->withTwoFactor()->create([
         'role' => UserRole::Admin,
     ]);
 
     $this->actingAs($admin)
         ->get(route($route))
-        ->assertForbidden();
+        ->assertRedirect(route('dashboard'))
+        ->assertSessionHas('status', 'This Control Room area is available only to the Super Admin.');
 })->with([
     'booth.sessions',
     'members.index',

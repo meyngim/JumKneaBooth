@@ -20,7 +20,14 @@ class EnsureUserIsAdmin
     {
         $user = $request->user();
 
-        abort_unless($user instanceof User && $user->isAdmin(), 403);
+        abort_unless($user instanceof User, 403);
+
+        if (! $user->isAdmin()) {
+            return to_route('member.history')->with(
+                'status',
+                'The Control Room is available only to JumKneaBooth administrators.',
+            );
+        }
 
         if ($roles === []) {
             return $next($request);
@@ -30,7 +37,12 @@ class EnsureUserIsAdmin
             ->map(fn (string $role): ?UserRole => UserRole::tryFrom($role))
             ->filter();
 
-        abort_unless($allowedRoles->contains($user->role), 403);
+        if (! $allowedRoles->contains($user->role)) {
+            return to_route('dashboard')->with(
+                'status',
+                'This Control Room area is available only to the Super Admin.',
+            );
+        }
 
         return $next($request);
     }
