@@ -2,10 +2,10 @@ import { Head, Link } from '@inertiajs/react';
 import {
     Camera,
     Clock3,
-    HardDrive,
-    Image,
+    Handshake,
     QrCode,
     ShieldCheck,
+    Wallet,
 } from 'lucide-react';
 import { dashboard } from '@/routes';
 
@@ -18,18 +18,18 @@ const metrics = [
         icon: Camera,
     },
     {
-        label: 'QR scans today',
+        label: 'QR downloads',
         value: '—',
-        hint: 'Private download links opened',
+        hint: 'Private photo links opened today',
         href: '/analytics/booths',
         icon: QrCode,
     },
     {
-        label: 'Active campaigns',
+        label: 'Active sponsors',
         value: '—',
-        hint: 'Sponsor campaigns currently assigned',
+        hint: 'Yearly sponsorship plans delivering',
         href: '/sponsors/campaigns',
-        icon: Image,
+        icon: Handshake,
     },
     {
         label: 'Assets expiring',
@@ -39,11 +39,11 @@ const metrics = [
         icon: Clock3,
     },
     {
-        label: 'Storage health',
+        label: 'Digital tips',
         value: '—',
-        hint: 'R2 asset and purge-worker status',
-        href: '/privacy/retention',
-        icon: HardDrive,
+        hint: 'Optional developer-support activity',
+        href: '/revenue/tips',
+        icon: Wallet,
     },
 ];
 
@@ -60,8 +60,8 @@ export default function Dashboard() {
                         Super Admin Control Room
                     </h1>
                     <p className="mt-1 text-sm text-muted">
-                        Monitor booth activity, sponsor delivery, asset
-                        retention, and platform security from one place.
+                        Monitor guest and member experiences, sponsor delivery,
+                        private photo retention, and platform security.
                     </p>
                 </div>
                 <div className="grid auto-rows-min gap-4 sm:grid-cols-2 xl:grid-cols-5">
@@ -92,24 +92,27 @@ export default function Dashboard() {
                         <div className="flex items-center gap-2">
                             <ShieldCheck className="size-4 text-brand" />
                             <h2 className="text-sm font-medium">
-                                Privacy & retention
+                                Private delivery & retention
                             </h2>
                         </div>
                         <p className="mt-2 text-sm text-muted">
-                            Expiring assets, deletion-worker outcomes, and
-                            privacy requests will surface here for review.
+                            Guest sessions use unique, obfuscated QR links.
+                            Member history remains available only during the
+                            same 30-day R2 retention window.
                         </p>
                     </section>
                     <section className="rounded-xl bg-surface p-5 ring-1 ring-border">
                         <div className="flex items-center gap-2">
-                            <Image className="size-4 text-brand" />
+                            <Handshake className="size-4 text-brand" />
                             <h2 className="text-sm font-medium">
-                                Sponsor delivery
+                                Sponsor-supported platform
                             </h2>
                         </div>
                         <p className="mt-2 text-sm text-muted">
-                            Campaign pacing, branded-frame usage, and
-                            download-page placement delivery will appear here.
+                            Yearly sponsors can receive approved brand
+                            placements on frames, filters, and download or
+                            share-page banners. Unsponsored photos retain the
+                            JumKneaBooth watermark.
                         </p>
                     </section>
                 </div>

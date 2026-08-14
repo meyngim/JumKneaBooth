@@ -1,17 +1,22 @@
 import {
     Camera,
     CircleDollarSign,
+    CreditCard,
     Frame,
     Handshake,
+    HardDrive,
+    Image,
     LayoutDashboard,
-    Megaphone,
     Monitor,
     Palette,
+    QrCode,
     ScrollText,
     Settings2,
     ShieldCheck,
-    TrendingUp,
+    Sparkles,
+    Trash2,
     Users,
+    Wallet,
 } from 'lucide-react';
 import type { NavGroup } from '@/types';
 
@@ -27,7 +32,7 @@ export const adminNav: NavGroup[] = [
         ],
     },
     {
-        title: 'Booth Operations',
+        title: 'Booth Experience',
         items: [
             {
                 title: 'Photo Sessions',
@@ -35,9 +40,19 @@ export const adminNav: NavGroup[] = [
                 icon: Camera,
             },
             {
-                title: 'Frames & Filters',
+                title: 'Frames & Themes',
                 href: '/booth/frames',
-                icon: Palette,
+                icon: Frame,
+            },
+            {
+                title: 'Filters & Effects',
+                href: '/booth/filters',
+                icon: Sparkles,
+            },
+            {
+                title: 'Watermark Rules',
+                href: '/booth/watermarks',
+                icon: Image,
             },
             {
                 title: 'Booth Devices',
@@ -47,7 +62,7 @@ export const adminNav: NavGroup[] = [
         ],
     },
     {
-        title: 'Sponsors & Campaigns',
+        title: 'Sponsorship',
         items: [
             {
                 title: 'Sponsors',
@@ -55,29 +70,49 @@ export const adminNav: NavGroup[] = [
                 icon: Handshake,
             },
             {
-                title: 'Campaigns',
+                title: 'Annual Plans & Campaigns',
                 href: '/sponsors/campaigns',
-                icon: Megaphone,
+                icon: CircleDollarSign,
             },
             {
                 title: 'Brand Placements',
                 href: '/sponsors/placements',
-                icon: Frame,
+                icon: Palette,
             },
         ],
     },
     {
-        title: 'Members & Privacy',
+        title: 'Audience & Privacy',
         items: [
             {
-                title: 'Members',
+                title: 'Platform Members',
                 href: '/members',
                 icon: Users,
             },
             {
-                title: 'Retention & Privacy',
+                title: 'Guest Experience',
+                href: '/access/guests',
+                icon: QrCode,
+            },
+            {
+                title: 'Privacy & Retention',
                 href: '/privacy/retention',
-                icon: ShieldCheck,
+                icon: Trash2,
+            },
+        ],
+    },
+    {
+        title: 'Revenue',
+        items: [
+            {
+                title: 'Digital Tip Jar',
+                href: '/revenue/tips',
+                icon: Wallet,
+            },
+            {
+                title: 'ABA PayWay',
+                href: '/revenue/payway',
+                icon: CreditCard,
             },
         ],
     },
@@ -85,12 +120,12 @@ export const adminNav: NavGroup[] = [
         title: 'Insights',
         items: [
             {
-                title: 'Booth Performance',
+                title: 'Booth & Guest Activity',
                 href: '/analytics/booths',
-                icon: TrendingUp,
+                icon: Camera,
             },
             {
-                title: 'Sponsor Performance',
+                title: 'Sponsor & Revenue',
                 href: '/analytics/sponsors',
                 icon: CircleDollarSign,
             },
@@ -100,14 +135,19 @@ export const adminNav: NavGroup[] = [
         title: 'System',
         items: [
             {
+                title: 'Authentication & Access',
+                href: '/system/access',
+                icon: ShieldCheck,
+            },
+            {
+                title: 'R2 Storage & Purge',
+                href: '/system/storage',
+                icon: HardDrive,
+            },
+            {
                 title: 'Platform Settings',
                 href: '/system/settings',
                 icon: Settings2,
-            },
-            {
-                title: 'Super Admins',
-                href: '/system/admins',
-                icon: ShieldCheck,
             },
             {
                 title: 'Audit Log',
